@@ -8,4 +8,4 @@ Create:
 
 Use namespace `k3s-training`, one replica, RollingUpdate (`maxUnavailable: 0`, `maxSurge: 1`), matching labels/selectors, small resource requests/limits, and immutable image `<registry>/k3s-training/be-only:zal-<git-sha>`.
 
-Add Deployment and Pod-template annotation `training.hairnerds.id/deployed-by: zal`. Pod template also needs `training.hairnerds.id/git-sha: IMAGE_GIT_SHA`. Do not use `imagePullPolicy: Never`. Do not create Namespace, Ingress, PV, or PVC.
+Add Deployment and Pod-template annotation `k3s-training/deployed-by: zal`. Pod template also needs `k3s-training/git-sha: IMAGE_GIT_SHA`. Do not use `imagePullPolicy: Never`. Do not create Namespace, Ingress, PV, or PVC.

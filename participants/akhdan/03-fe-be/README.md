@@ -12,4 +12,4 @@ Create:
 
 Frontend browser request must remain `/api/name`; Nginx resolves internal backend Service. Use namespace `k3s-training`, one replica, RollingUpdate (`maxUnavailable: 0`, `maxSurge: 1`), matching labels/selectors, small resource requests/limits, and immutable image `<registry>/k3s-training/fullstack-fe:akhdan-<git-sha>`.
 
-Add Deployment and Pod-template annotation `training.hairnerds.id/deployed-by: akhdan`. Pod template also needs `training.hairnerds.id/git-sha: IMAGE_GIT_SHA`. Do not use `imagePullPolicy: Never`. Do not create Namespace, Ingress, PV, or PVC. Backend image: `<registry>/k3s-training/fullstack-be:akhdan-<git-sha>`.
+Add Deployment and Pod-template annotation `k3s-training/deployed-by: akhdan`. Pod template also needs `k3s-training/git-sha: IMAGE_GIT_SHA`. Do not use `imagePullPolicy: Never`. Do not create Namespace, Ingress, PV, or PVC. Backend image: `<registry>/k3s-training/fullstack-be:akhdan-<git-sha>`.

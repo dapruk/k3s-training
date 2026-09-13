@@ -17,6 +17,6 @@ Required YAML: namespace `k3s-training`; fixed names/ports; one replica; Rolling
 Annotations:
 
 ```yaml
-training.hairnerds.id/deployed-by: <slug>
-training.hairnerds.id/git-sha: IMAGE_GIT_SHA
+k3s-training/deployed-by: <slug>
+k3s-training/git-sha: IMAGE_GIT_SHA
 ```

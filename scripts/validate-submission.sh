@@ -53,8 +53,8 @@ check_absent() { if grep -Eq "$1" "$all"; then echo "ERROR: $2" >&2; failed=1; f
 
 check_present 'namespace:[[:space:]]*k3s-training' "namespace must be k3s-training"
 for name in $expected_names; do check_present "name:[[:space:]]*$name([[:space:]]|$)" "missing resource name $name"; done
-check_present "training\.hairnerds\.id/deployed-by:[[:space:]]*$participant" "deployed-by annotation must be $participant"
-check_present 'training\.hairnerds\.id/git-sha:[[:space:]]*IMAGE_GIT_SHA' "Pod template needs IMAGE_GIT_SHA annotation"
+check_present "k3s-training/deployed-by:[[:space:]]*$participant" "deployed-by annotation must be $participant"
+check_present 'k3s-training/git-sha:[[:space:]]*IMAGE_GIT_SHA' "Pod template needs IMAGE_GIT_SHA annotation"
 check_present 'type:[[:space:]]*RollingUpdate' "Deployment must use RollingUpdate"
 check_present 'maxUnavailable:[[:space:]]*0' "maxUnavailable must be 0"
 check_present 'maxSurge:[[:space:]]*1' "maxSurge must be 1"

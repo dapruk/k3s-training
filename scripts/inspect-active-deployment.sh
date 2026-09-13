@@ -14,7 +14,7 @@ esac
 namespace=k3s-training
 for deployment in $deployments; do
   echo "=== $deployment ==="
-  kubectl get deployment "$deployment" -n "$namespace" -o custom-columns='NAME:.metadata.name,IMAGE:.spec.template.spec.containers[*].image,DEPLOYED-BY:.spec.template.metadata.annotations.training\.hairnerds\.id/deployed-by,GIT-SHA:.spec.template.metadata.annotations.training\.hairnerds\.id/git-sha'
+  kubectl get deployment "$deployment" -n "$namespace" -o custom-columns='NAME:.metadata.name,IMAGE:.spec.template.spec.containers[*].image,DEPLOYED-BY:.spec.template.metadata.annotations.k3s-training/deployed-by,GIT-SHA:.spec.template.metadata.annotations.k3s-training/git-sha'
   kubectl rollout status "deployment/$deployment" -n "$namespace" --timeout=10s || true
 done
 

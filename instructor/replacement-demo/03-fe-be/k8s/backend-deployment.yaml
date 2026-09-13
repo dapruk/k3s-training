@@ -4,7 +4,7 @@ metadata:
   name: training-fullstack-be
   namespace: k3s-training
   annotations:
-    training.hairnerds.id/deployed-by: instructor
+    k3s-training/deployed-by: instructor
 spec:
   replicas: 1
   strategy:
@@ -20,8 +20,8 @@ spec:
       labels:
         app: training-fullstack-be
       annotations:
-        training.hairnerds.id/deployed-by: instructor
-        training.hairnerds.id/git-sha: IMAGE_GIT_SHA
+        k3s-training/deployed-by: instructor
+        k3s-training/git-sha: IMAGE_GIT_SHA
     spec:
       containers:
         - name: app
