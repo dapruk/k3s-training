@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: training-fullstack-fe
+  namespace: k3s-training
+  annotations:
+    training.hairnerds.id/deployed-by: instructor
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: training-fullstack-fe
+  template:
+    metadata:
+      labels:
+        app: training-fullstack-fe
+      annotations:
+        training.hairnerds.id/deployed-by: instructor
+        training.hairnerds.id/git-sha: IMAGE_GIT_SHA
+    spec:
+      containers:
+        - name: app
+          image: <registry>/k3s-training/fullstack-fe:instructor-replacement-IMAGE_GIT_SHA
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi

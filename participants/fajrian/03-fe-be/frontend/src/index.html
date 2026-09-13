@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Fajrian Fullstack</title></head>
+<body><h1 id="message">Hello World</h1><p id="loading">Loading name...</p><script>
+fetch('/api/name').then(r => r.json()).then(({name}) => {
+  document.querySelector('#message').textContent = `Hello World, ${name}!`;
+  document.querySelector('#loading').remove();
+});
+</script></body></html>
