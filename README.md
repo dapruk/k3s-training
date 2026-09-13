@@ -23,6 +23,16 @@ Expected image pattern:
 
 Registry remains configurable because repo contains no existing CI/CD convention.
 
+## Image workflow
+
+GitHub Actions workflow [`.github/workflows/build-images.yml`](.github/workflows/build-images.yml) discovers every completed Dockerfile:
+
+- Pull request: validates submissions and builds images without pushing.
+- Push to `main` or manual run: builds and pushes images to GHCR.
+- Tag: `ghcr.io/<github-owner>/k3s-training/<case>:<participant-or-instructor>-<git-sha>`.
+
+Participant starter folders have no Dockerfiles, so CI skips them until participant completes assignment. GHCR package visibility/authentication remains repository-owner configuration.
+
 ## Failure types
 
 - Application failure: image runs, app behavior wrong.
